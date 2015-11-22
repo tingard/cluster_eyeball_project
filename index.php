@@ -29,11 +29,13 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 	download: true,
 	step: function(results) {
 		console.log(results[0]);
-		for (i=0; i<results.split(',').length; i++){
-			out += tdWrap(data[i]);
+		if (results[0]){
+			for (i=0; i<results.length; i++){
+				out += tdWrap(data[i]);
+			}
+			console.log(out);
+			$(out).appendTo('#tableWrapper');
 		}
-		console.log(out);
-		$(out).appendTo('#tableWrapper');
 	}
 })
 
