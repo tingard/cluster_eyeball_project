@@ -32,6 +32,7 @@ function generateTableRow(data) {
 	out = '';
 	for (int i=0; i<data.length; i++){
 		out += tdWrap(data[i]);
+	}
 	out.hide().appendTo('#testBox').fadeIn(); 
 }
 
