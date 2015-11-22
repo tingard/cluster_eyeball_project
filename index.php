@@ -25,7 +25,7 @@ function async(arg, your_function, callback) {
 	}, 0);
 }
 Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
-	worker:true,
+	download:true,
 	step: function(results) {
 		data = results.data;
 		console.log(data);
