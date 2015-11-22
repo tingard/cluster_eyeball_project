@@ -34,9 +34,8 @@ function checkbox_click(obs_index){
 	console.log(obs_index+' checkbox changed');
 	current_flag = $('#testBox tr').eq(obs_index+1).find('td').eq(2).children(0)[0].selectedIndex;
 	changed_listing = dataArray[obs_index]
-	changed_listing[3] = int($('#check_'+obs_index).checked)
-	changeLog.push(
-	//flag = document.getElementById('testBox').rows[obs_index].cells[2];
+	changed_listing[2] = int($('#check_'+obs_index).checked)
+	changeLog.push([index, changed_listing])
 	console.log(flag);
 }
 
