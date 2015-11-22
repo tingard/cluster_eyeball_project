@@ -34,7 +34,7 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 			}
 			console.log(out);
 			$(out).appendTo('#tableWrapper');
-		}
+		} else{ console.log('shit'); }
 	}
 })
 
