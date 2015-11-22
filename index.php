@@ -27,8 +27,12 @@ function async(arg, your_function, callback) {
 	}, 0);
 }
 
-function select_change(obs_index){}
-function checkbox_click(obs_index){}
+function select_change(obs_index){
+	console.log(obs_index+' select changed');
+}
+function checkbox_click(obs_index){
+	console.log(obs_index+' checkbox changed');
+}
 
 function flagGenerator(obs_index){
 	select = '<select id="select_'+obs_index+'" onchange="select_change('+obs_index+')">\n\t'+
