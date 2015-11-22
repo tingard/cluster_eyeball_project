@@ -39,7 +39,7 @@ function generateTableRow(data) {
 		out += tdWrap(data[i]);
 	}
 	console.log(out);
-	$(out).hide().appendTo('#testBox').fadeIn(); 
+	$(out).appendTo('#tableWrapper'); 
 }
 
 /*
