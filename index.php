@@ -39,7 +39,7 @@ function generateTableRow(data) {
 		out += tdWrap(data[i]);
 	}
 	console.log(out);
-	//out.hide().appendTo('#testBox').fadeIn(); 
+	out.hide().appendTo('#testBox').fadeIn(); 
 }
 
 /*
@@ -168,12 +168,12 @@ $(window).resize(function() {
 </script>
 </head>	
 <body>
-<div id="nameInput">
+<!--<div id="nameInput">
 Name (required): <input type='text' id='name'><br>
-</div>
+</div>-->
 <div id='tableWrapper'>
 <table id='testBox'>
-<tr><td>Information<td>XCS image<td>SDSS image<td>Flag cluster</tr>
+<tr><td>number<td>letter</tr>
 </table>
 </div>
 </body>
