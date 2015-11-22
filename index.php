@@ -16,7 +16,7 @@ function makeLink(s,href) { return '<a href="'+href+'">'+s+'</a>'; }
 var index = 0;
 var maxIndex = 0;
 var dataArray = new Array();
-
+var changeLog = new Array();
 var foo;
 index = 0;
 
@@ -26,13 +26,18 @@ function async(arg, your_function, callback) {
 		if (callback) {callback();}
 	}, 0);
 }
+
+function select_change(obs_index){}
+function checkbox_click(obs_index){}
+
 function flagGenerator(obs_index){
-	select = '<select id="select_'+obs_index+'">\n\t'+
-		  '<option value="0">Flag0</option>\n\t' +
-		  '<option value="1">Flag1</option>\n\t' +
-		  '<option value="2">Flag2</option>\n\t' +
-		  '<option value="3">Flag3</option>\n</select>\n';
-	checkbox = '<input id="check_'+ obs_index +'" type="checkbox" name="isFlag">';
+	select = '<select id="select_'+obs_index+'" onchange="select_change('+obs_index+')">\n\t'+
+		     '<option value="0">Flag0</option>\n\t' +
+		     '<option value="1">Flag1</option>\n\t' +
+		     '<option value="2">Flag2</option>\n\t' +
+   		     '<option value="3">Flag3</option>\n</select>\n';
+	checkbox = '<input id="check_'+ obs_index +'" type="checkbox" onclick="checkbox_click('+
+			   obs_index+')" name="isFlag">';
 	return tdWrap(select)+tdWrap(checkbox);
 }
 
@@ -55,10 +60,10 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 })
 
 function submit_changes() {
-	for (i=0; i<changelog.length; i++){
+	for (i=0; i<changeLog.length; i++){
 		postData = {};
-		postData['index'] = changelog[i][0];
-		postData['data'] = changelog[i];
+		postData['index'] = changeLog[i][0];
+		postData['data'] = changeLog[i];
 		console.log(postData);
 		/*
 		$.ajax({
