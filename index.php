@@ -29,8 +29,9 @@ function async(arg, your_function, callback) {
 
 function select_change(obs_index){
 	changed_to = $('#select_'+obs_index)[0].selectedIndex;
+	console.log(type(changed_to));
 	console.log(obs_index+' select changed to index' + changed_to);
-	$('#check_'+obs_index)[0].checked = dataArray[obs_index][changed_to]==1 ? true : false;
+	$('#check_'+obs_index)[0].checked = dataArray[obs_index][changed_to]== "1" ? true : false;
 }
 function checkbox_click(obs_index){
 	console.log(obs_index+' checkbox changed');
