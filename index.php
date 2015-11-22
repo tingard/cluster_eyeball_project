@@ -42,9 +42,9 @@ function checkbox_click(obs_index){
 function flagGenerator(obs_index){
 	select = '<select id="select_'+obs_index+'" onchange="select_change('+obs_index+')">\n\t'+
 		     '<option value="0">Flag0</option>\n\t' +
-		     '<option value="1">Flag1</option>\n\t' +
-		     '<option value="2">Flag2</option>\n\t' +
-   		     '<option value="3">Flag3</option>\n</select>\n';
+		     //'<option value="1">Flag1</option>\n\t' +
+		     //'<option value="2">Flag2</option>\n\t' +
+   		     '<option value="3">Flag1</option>\n</select>\n';
 	checkbox = '<input id="check_'+ obs_index +'" type="checkbox" onclick="checkbox_click('+
 			   obs_index+')" name="isFlag">';
 	return tdWrap(select)+tdWrap(checkbox);
