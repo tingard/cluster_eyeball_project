@@ -35,6 +35,8 @@ function flagGenerator(obs_index){
 	checkbox = '<input id="check_'+ obs_index +'" type="checkbox" name="isFlag">';
 	return tdWrap(select)+tdWrap(checkbox);
 }
+function flagStorage(obs_index, data){
+}
 Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 	download:true,
 	step: function(results) {
@@ -49,8 +51,9 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 			out += '</tr>';
 			console.log(out);
 			$(out).appendTo('#tableWrapper');
-			index++;
 		}
+		dataArray.push(data)
+		index++;
 	}
 })
 
@@ -63,6 +66,20 @@ function generateTableRow(data) {
 	$(out).appendTo('#tableWrapper'); 
 }
 
+function submit_changes() {
+	for (i=0; i<changelog.length; i++){
+		postData = {};
+		postData['index'] = changelog[i][0];
+		postData['data'] = changelog[i];
+		$.ajax({
+			type: "POST",
+			url: "./bin/changeFlags.php",
+			data: postData,
+			success: function() {
+				console.log('Sent form');
+			}	
+  		});
+}
 /*
 function buttonBind() {
 	$('button').click(function(){
@@ -192,9 +209,10 @@ $(window).resize(function() {
 <!--<div id="nameInput">
 Name (required): <input type='text' id='name'><br>
 </div>-->
+<button id='submit_flags' onclick="submit_changes()">'Submit'</button>
 <div id='tableWrapper'>
-<table id='testBox'>
-<tr><td>number<td>letter</tr>
+<table id='testBox' style='width:80%;'>
+<tr><td>number<td>letter<td>Flag<td>Checkbox</tr>
 </table>
 </div>
 </body>
