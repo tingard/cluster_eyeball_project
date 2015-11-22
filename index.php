@@ -28,8 +28,7 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/astro_hack_day/cart_WP8_photoz_
 	worker:true,
 	download: true,
 	step: function(results) {
-		console.log(results.data);
-		async(foo, generateTableRow);
+		generateTableRow(data);
 	}
 })
 
@@ -39,7 +38,8 @@ function generateTableRow(data) {
 	for (i=0; i<data.length; i++){
 		out += tdWrap(data[i]);
 	}
-	out.hide().appendTo('#testBox').fadeIn(); 
+	console.log(out);
+	//out.hide().appendTo('#testBox').fadeIn(); 
 }
 
 /*
