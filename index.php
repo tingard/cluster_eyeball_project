@@ -27,16 +27,21 @@ function async(arg, your_function, callback) {
 	}, 0);
 }
 function flagGenerator(obs_index){
-	return '<td>'+obs_index+'</td>';
+	out = '<select>\n\t'+
+		  '<option value="volvo">Volvo</option>\n\t' +
+		  '<option value="saab">Saab</option>\n\t' +
+		  '<option value="mercedes">Mercedes</option>\n\t' +
+		  '<option value="audi">Audi</option>\n</select>\n'
+	return out
 }
 Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 	download:true,
 	step: function(results) {
-		data = results.data;
+		data = results.data[0];
 		out = '<tr>';
 		console.log(data);
-		for (i=0; i<data[0].length; i++){
-			out += tdWrap(data[0][i]);
+		for (i=0; i<data.length; i++){
+			out += tdWrap(data[i]);
 		}
 		out += flagGenerator(index);
 		out += '</tr>';
