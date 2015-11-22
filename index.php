@@ -69,11 +69,17 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 })
 
 function submit_changes() {
-	for (i=0; i<changeLog.length; i++){
-		postData = {};
-		postData['index'] = changeLog[i][0];
-		postData['data'] = changeLog[i];
-		console.log(postData);
+	indexList = new Array();
+	while (changeLog.length>0){
+		row = changeLog.pop()
+		if (indexList.indexOf(row[0])>0){
+			postData = {};
+			postData['index'] = row[0];
+			postData['data'] = row[1];
+			console.log("Chaned data:");
+			console.log(postData);
+			indexList.push(row[0]);
+		}
 		/*
 		$.ajax({
 			type: "POST",
@@ -84,6 +90,7 @@ function submit_changes() {
 			}	
   		});*/
 	}
+	changeLog = new Array();
 }
 /*
 function buttonBind() {
