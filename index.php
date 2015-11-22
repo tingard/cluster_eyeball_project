@@ -29,12 +29,15 @@ function async(arg, your_function, callback) {
 
 function select_change(obs_index){
 	console.log(obs_index+' select changed');
+	changed_to = $('#select_'+obs_index)[0].selectedIndex;
+	$('#check_'+obs_index)[0].checked = dataArray[obs_index][changed_to]=="1" ? true : false;
 }
 function checkbox_click(obs_index){
 	console.log(obs_index+' checkbox changed');
 	current_flag = $('#select_'+obs_index)[0].selectedIndex;
+	console.log("Current flag: "+current_flag);
 	changed_listing = dataArray[obs_index];
-	changed_listing[2] = $('#check_'+obs_index)[0].checked ? 1 : 0;
+	changed_listing[2+current_flag] = $('#check_'+obs_index)[0].checked ? "1" : "0";
 	changeLog.push([obs_index, changed_listing]);
 	console.log(current_flag);
 }
