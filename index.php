@@ -32,7 +32,7 @@ function flagGenerator(obs_index){
 Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 	download:true,
 	step: function(results) {
-		data = results.data[0].split(',');
+		data = results.data.split(',');
 		out = '<tr>';
 		console.log(data.length);
 		for (i=0; i<data.length; i++){
