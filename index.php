@@ -32,7 +32,8 @@ function select_change(obs_index){
 }
 function checkbox_click(obs_index){
 	console.log(obs_index+' checkbox changed');
-	flag = document.getElementById('testBox').rows[obs_index].cells[2];
+	flag = $('#testBox tr').eq(obs_index+1).find('td').eq(2)
+	//flag = document.getElementById('testBox').rows[obs_index].cells[2];
 	console.log(flag);
 }
 
