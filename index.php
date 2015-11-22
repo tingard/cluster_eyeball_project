@@ -18,26 +18,33 @@ var maxIndex = 0;
 var dataArray = new Array();
 
 var foo;
+index = 0;
+
 function async(arg, your_function, callback) {
 	setTimeout(function() {
 		your_function(arg);
 		if (callback) {callback();}
 	}, 0);
 }
+function flagGenerator(obs_index){
+	return '<td>'+obs_index+'</td>';
+}
 Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 	download:true,
 	step: function(results) {
 		data = results.data;
 		console.log(data);
-		out = '';
+		out = '<tr>';
 		for (i=0; i<data.length; i++){
 			out += tdWrap(data[i]);
 		}
+		out += flagGenerator(index);
+		out += '</tr>';
 		console.log(out);
 		$(out).appendTo('#tableWrapper');
+		index++;
 	}
 })
-
 
 function generateTableRow(data) {
 	out = '';
