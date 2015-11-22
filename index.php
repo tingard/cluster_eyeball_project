@@ -27,14 +27,15 @@ function async(arg, your_function, callback) {
 Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 	worker:true,
 	step: function(results) {
-		console.log(results[0]);
+		data = results.data;
+		console.log(data[0]);
 		if (results[0]){
-			for (i=0; i<results.length; i++){
+			for (i=0; i<data.length; i++){
 				out += tdWrap(data[i]);
 			}
 			console.log(out);
 			$(out).appendTo('#tableWrapper');
-		} else{ console.log('shit'); }
+		} else{ console.log('shit');}
 	}
 })
 
