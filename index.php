@@ -32,7 +32,7 @@ function select_change(obs_index){
 }
 function checkbox_click(obs_index){
 	console.log(obs_index+' checkbox changed');
-	current_flag = $('#select_'+obs_index);
+	current_flag = $('#select_'+obs_index)[0].selectedIndex;
 	/*changed_listing = dataArray[obs_index]
 	changed_listing[2] = int($('#check_'+obs_index).checked)
 	changeLog.push([index, changed_listing])*/
