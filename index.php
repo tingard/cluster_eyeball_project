@@ -68,8 +68,8 @@ function submit_changes() {
 			success: function() {
 				console.log('Sent form');
 			}	
-	}
   		});*/
+	}
 }
 /*
 function buttonBind() {
