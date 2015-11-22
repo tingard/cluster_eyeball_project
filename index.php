@@ -67,6 +67,8 @@ function generateTableRow(data) {
 }
 
 function submit_changes() {
+	return;
+	/*
 	for (i=0; i<changelog.length; i++){
 		postData = {};
 		postData['index'] = changelog[i][0];
@@ -79,6 +81,7 @@ function submit_changes() {
 				console.log('Sent form');
 			}	
   		});
+	}*/
 }
 /*
 function buttonBind() {
