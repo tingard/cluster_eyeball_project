@@ -27,11 +27,11 @@ function async(arg, your_function, callback) {
 	}, 0);
 }
 function flagGenerator(obs_index){
-	out = '<select>\n\t'+
-		  '<option value="volvo">Volvo</option>\n\t' +
-		  '<option value="saab">Saab</option>\n\t' +
-		  '<option value="mercedes">Mercedes</option>\n\t' +
-		  '<option value="audi">Audi</option>\n</select>\n'
+	out = '<select id="select_'+obs_index+'">\n\t'+
+		  '<option value="0">Flag0</option>\n\t' +
+		  '<option value="1">Flag1</option>\n\t' +
+		  '<option value="2">Flag2</option>\n\t' +
+		  '<option value="3">Flag3</option>\n</select>\n'
 	return tdWrap(out)
 }
 Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
@@ -40,14 +40,16 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 		data = results.data[0];
 		out = '<tr>';
 		console.log(data);
-		for (i=0; i<data.length; i++){
-			out += tdWrap(data[i]);
+		if (data.length > 1){
+			for (i=0; i<data.length; i++){
+				out += tdWrap(data[i]);
+			}
+			out += flagGenerator(index);
+			out += '</tr>';
+			console.log(out);
+			$(out).appendTo('#tableWrapper');
+			index++;
 		}
-		out += flagGenerator(index);
-		out += '</tr>';
-		console.log(out);
-		$(out).appendTo('#tableWrapper');
-		index++;
 	}
 })
 
