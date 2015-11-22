@@ -76,7 +76,7 @@ function submit_changes() {
 	indexList = new Array();
 	console.log(changeLog)
 	while (changeLog.length>0){
-		row = changeLog.pop()
+		row = changeLog.pop(0)
 		if (indexList.indexOf(row[0])<0){
 			postData = {};
 			postData['index'] = row[0];
