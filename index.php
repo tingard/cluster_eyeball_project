@@ -70,9 +70,10 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 
 function submit_changes() {
 	indexList = new Array();
+	console.log(changeLog)
 	while (changeLog.length>0){
 		row = changeLog.pop()
-		if (indexList.indexOf(row[0])>0){
+		if (indexList.indexOf(row[0])<0){
 			postData = {};
 			postData['index'] = row[0];
 			postData['data'] = row[1];
