@@ -6,7 +6,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
 </script>
 <script style="text/javasript" src="js/PapaParse-4.1.2/papaparse.js"></script>
-<link rel="stylesheet" type="text/css" href="./stylesheet.css">
 <script>
 function cleanup(s) { return s.replace(/\\/g,'').replace(/"/g,'') }
 
