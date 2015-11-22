@@ -32,7 +32,7 @@ function flagGenerator(obs_index){
 		  '<option value="saab">Saab</option>\n\t' +
 		  '<option value="mercedes">Mercedes</option>\n\t' +
 		  '<option value="audi">Audi</option>\n</select>\n'
-	return out
+	return tdWrap(out)
 }
 Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 	download:true,
