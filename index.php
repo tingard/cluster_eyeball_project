@@ -7,7 +7,6 @@
 </script>
 <script style="text/javasript" src="js/PapaParse-4.1.2/papaparse.js"></script>
 <script>
-function cleanup(s) { return s.replace(/\\/g,'').replace(/"/g,'') }
 
 function tdWrap(s) { return '<td>' + s + '</td>'}
 
@@ -29,8 +28,8 @@ function async(arg, your_function, callback) {
 
 function select_change(obs_index){
 	changed_to = $('#select_'+obs_index)[0].selectedIndex;
-	console.log(typeof changed_to);
-	console.log(obs_index+' select changed to index' + changed_to);
+	console.log(obs_index+' select changed to index ' + changed_to);
+	console.log(dataArray[obs_index][changed_to]);
 	$('#check_'+obs_index)[0].checked = dataArray[obs_index][changed_to]== "1" ? true : false;
 }
 function checkbox_click(obs_index){
@@ -61,7 +60,7 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 		data = results.data[0];
 		out = '<tr>';
 		if (data.length > 1){
-			for (i=0; i<data.length; i++){
+			for (i=0; i<2; i++){
 				out += tdWrap(data[i]);
 			}
 			out += flagGenerator(index);
@@ -82,9 +81,9 @@ function submit_changes() {
 			postData = {};
 			postData['index'] = row[0];
 			postData['data'] = row[1];
-			console.log("Chaned data:");
+			console.log("Changed data:");
 			console.log(postData);
-			indexList.push(row[0]);
+			//indexList.push(row[0]);
 		}
 		/*
 		$.ajax({
