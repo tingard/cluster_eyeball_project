@@ -27,12 +27,13 @@ function async(arg, your_function, callback) {
 	}, 0);
 }
 function flagGenerator(obs_index){
-	out = '<select id="select_'+obs_index+'">\n\t'+
+	select = '<select id="select_'+obs_index+'">\n\t'+
 		  '<option value="0">Flag0</option>\n\t' +
 		  '<option value="1">Flag1</option>\n\t' +
 		  '<option value="2">Flag2</option>\n\t' +
-		  '<option value="3">Flag3</option>\n</select>\n'
-	return tdWrap(out)
+		  '<option value="3">Flag3</option>\n</select>\n';
+	checkbox = '<input id="check_'+ obs_index +'" type="checkbox" name="isFlag">';
+	return tdWrap(select)+tdWrap(checkbox);
 }
 Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 	download:true,
