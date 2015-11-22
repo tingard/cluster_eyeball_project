@@ -18,6 +18,12 @@ var maxIndex = 0;
 var dataArray = new Array();
 
 var foo;
+function async(arg, your_function, callback) {
+	setTimeout(function() {
+		your_function(arg);
+		if (callback) {callback();}
+	}, 0);
+}
 Papa.parse("http://astronomy.sussex.ac.uk/~tl229/astro_hack_day/cart_WP8_photoz_XMM_LSS.csv", {
 	worker:true,
 	download: true,
@@ -26,6 +32,7 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/astro_hack_day/cart_WP8_photoz_
 		async(foo, generateTableRow);
 	}
 })
+
 
 function generateTableRow(data) {
 	out = '';
