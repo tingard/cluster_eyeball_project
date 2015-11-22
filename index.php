@@ -30,7 +30,7 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/astro_hack_day/cart_WP8_photoz_
 
 function generateTableRow(data) {
 	out = '';
-	for (int i=0; i<data.length; i++){
+	for (i=0; i<data.length; i++){
 		out += tdWrap(data[i]);
 	}
 	out.hide().appendTo('#testBox').fadeIn(); 
