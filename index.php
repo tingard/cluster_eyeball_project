@@ -24,11 +24,11 @@ function async(arg, your_function, callback) {
 		if (callback) {callback();}
 	}, 0);
 }
-Papa.parse("http://astronomy.sussex.ac.uk/~tl229/astro_hack_day/cart_WP8_photoz_XMM_LSS.csv", {
+Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 	worker:true,
 	download: true,
 	step: function(results) {
-		generateTableRow(data);
+		generateTableRow(results);
 	}
 })
 
