@@ -22,7 +22,6 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/astro_hack_day/cart_WP8_photoz_
 	worker:true,
 	download: true,
 	step: function(results) {
-		foo.push_back(results.data);
 		console.log(results.data);
 		async(foo, generateTableRow);
 	}
