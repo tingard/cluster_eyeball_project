@@ -29,7 +29,7 @@ function async(arg, your_function, callback) {
 function select_change(obs_index){
 	changed_to = $('#select_'+obs_index)[0].selectedIndex;
 	console.log(obs_index+' select changed to index ' + changed_to);
-	console.log(dataArray[obs_index][changed_to]);
+	console.log(dataArray[obs_index][2+changed_to]);
 	$('#check_'+obs_index)[0].checked = dataArray[obs_index][changed_to]== "1" ? true : false;
 }
 function checkbox_click(obs_index){
@@ -74,7 +74,7 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 
 function submit_changes() {
 	indexList = new Array();
-	console.log(changeLog)
+	changeLog.reverse(); // botch to replace stack method
 	while (changeLog.length>0){
 		row = changeLog.pop(0)
 		if (indexList.indexOf(row[0])<0){
