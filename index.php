@@ -44,7 +44,8 @@ function checkbox_click(obs_index){
 }
 
 function flagGenerator(obs_index){
-	select = '<select id="select_'+obs_index+'" onchange="select_change('+obs_index+')">\n\t'+
+	select = '<select id="select_'+obs_index+'" onchange="select_change('+obs_index+')"'+
+			 'width=100px>\n\t'+
 		     '<option value="0">Flag0</option>\n\t' +
 		     //'<option value="1">Flag1</option>\n\t' +
 		     //'<option value="2">Flag2</option>\n\t' +
