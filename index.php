@@ -40,6 +40,7 @@ function checkbox_click(obs_index){
 	changed_listing = dataArray[obs_index];
 	changed_listing[2+current_flag] = $('#check_'+obs_index)[0].checked ? "1" : "0";
 	changeLog.push([obs_index, changed_listing]);
+	dataArray[obs_index] = changed_listing;
 	console.log(current_flag);
 }
 
