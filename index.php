@@ -42,7 +42,6 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 	step: function(results) {
 		data = results.data[0];
 		out = '<tr>';
-		console.log(data);
 		if (data.length > 1){
 			for (i=0; i<data.length; i++){
 				out += tdWrap(data[i]);
@@ -214,7 +213,7 @@ Name (required): <input type='text' id='name'><br>
 <button id='submit_flags' onclick="submit_changes()">'Submit'</button>
 <div id='tableWrapper'>
 <table id='testBox' style='width:80%;'>
-<tr><td>number<td>letter<td>Flag<td>Checkbox</tr>
+<tr><td width=50px>number<td>letter<td>Flag<td>Checkbox</tr>
 </table>
 </div>
 </body>
