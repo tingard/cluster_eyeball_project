@@ -1,7 +1,7 @@
 <?php 
     $index = $_POST['index'];
     $flag = $_POST['flag'];
-    $file = 'php_bin/received_changes.csv';
+    $file = '../received_changes.csv';
     if ( file_exists($file) ) {
         $current = file_get_contents($file);
     } else {
