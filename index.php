@@ -73,6 +73,7 @@ function submit_changes() {
     changeLog.reverse(); // botch to replace stack method, results in un-neccesary posts
     while (changeLog.length>0){
         row = changeLog.pop()
+        console.log('posting');
         postData = {};
         postData['index'] = row[0];
         postData['flag'] = row[1][row[1].length-1];
