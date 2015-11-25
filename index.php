@@ -45,7 +45,7 @@ function checkbox_click(obs_index){
 
 function flagGenerator(obs_index){
 	select = '<select id="select_'+obs_index+'" onchange="select_change('+obs_index+')"'+
-			 'width=100px>\n\t'+
+			 'style="width:100px">\n\t'+
 		     '<option value="0">Flag0</option>\n\t' +
 		     //'<option value="1">Flag1</option>\n\t' +
 		     //'<option value="2">Flag2</option>\n\t' +
@@ -54,10 +54,11 @@ function flagGenerator(obs_index){
 			   obs_index+')" name="isFlag">';
 	return tdWrap(select)+tdWrap(checkbox);
 }
-
-Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
+var steps = 0;
+Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XMMObsId.csv ", {
 	download:true,
 	step: function(results) {
+		if (index==0){ return; }
 		data = results.data[0];
 		out = '<tr>';
 		if (data.length > 1){
@@ -75,7 +76,7 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/testCsv.csv", {
 
 function submit_changes() {
 	indexList = new Array();
-	changeLog.reverse(); // botch to replace stack method
+	changeLog.reverse(); // botch to replace stack method, results in un-neccesary posts
 	while (changeLog.length>0){
 		row = changeLog.pop(0)
 		if (indexList.indexOf(row[0])<0){
@@ -84,8 +85,8 @@ function submit_changes() {
 			postData['data'] = row[1];
 			console.log("Changed data:");
 			console.log(postData);
-			//indexList.push(row[0]);
 		}
+			//indexList.push(row[0]);
 		/*
 		$.ajax({
 			type: "POST",
@@ -98,128 +99,6 @@ function submit_changes() {
 	}
 	changeLog = new Array();
 }
-/*
-function buttonBind() {
-	$('button').click(function(){
-		if (flagEvent1(this.id)){
-			$(this).prop('disabled','disabled');
-		}
-	});
-}
-var sourecListRetrieve = new XMLHttpRequest(); //New request object
-sourecListRetrieve.onload = function() {
-	var file_contents = this.responseText.split('<--FLAG_SECTION-->');
-	var csv_contents = file_contents[0];
-	var tmp_array = csv_contents.split('\\n');
-	for (i=0; i<tmp_array.length; i++){
-		dataArray.push(tmp_array[i].split(','))
-	}
-	
-	// TODO: add in code to get flagged data here
-	
-
-	maxIndex = tmp_array.length;
-	var count =0;
-	while($(window).scrollTop() >= $(document).height() - 
-			$(window).height() - 50) {
-    	if (index < maxIndex) {
-    		// TODO: change background if flagged
-			$(getNextObservation()).hide().appendTo('#testBox').fadeIn(); 
-			index++;
-		}
-		count++;
-		if(count>100){ break };
-	}
-	buttonBind();
-};
-sourecListRetrieve.open("get", "./bin/getData.php", true);
-sourecListRetrieve.send();
-function flagEvent1(id) {
-	console.log(id);
-	name = document.getElementById('name').value;
-	textThing = document.getElementById(id.split('_FLAG')[0]+'_txt').value;
-	if (name.length==0) {
-		alert('Please input a name');
-		return false;
-	} else {
-		postData = {};
-		postData['id'] = id
-		postData['name']=name;	
-		if (textThing!=undefined) {
-			postData['foo'] = textThing
-		}
-		$.ajax({
-			type: "POST",
-			url: "./bin/flag.php",
-			data: postData,
-			success: function() {
-				console.log('Sent form');
-			}	
-  		});
-		return true
-	}
-}
-function getNextObservation() {
-	name = cleanup(dataArray[index][0]);
-	redshift = 'Redshift: '+cleanup(dataArray[index][1]);
-	temperature = 'Temperature: '+cleanup(dataArray[index][2]);
-	richness = 'Richness: '+cleanup(dataArray[index][22]);
-	infoDiv = '<div>'+Array(name,redshift,temperature,richness).join('<br>')
-		+'</div>';
-	matchID = dataArray[index][19];
-	obsID_1 = dataArray[index][26];
-	obsID_2 = dataArray[index][26];
-	while (obsID_1.length<10){
-		obsID_1 = '0'+obsID_1;
-	}
-	src1 = './albertoIm/'+matchID+'_'+obsID_1+'_z.jpg';
-	src2 = "./sdss/"+matchID+'_'+obsID_2+"_s.jpg";
-	image1 = makeLink('<img src="'+src1+'">', src1);
-	image2 = makeLink('<img src="'+src2+'">', src2);
-	
-	// TODO: more flagging options
-	flag = dataArray[index][dataArray[index].length-1].replace('\\','');
-	button1 = '<button id="'+name.replace(' ','_')+'_FLAG1" ';
-	button2 = '<button id="'+name.replace(' ','_')+'_FLAG2" ';
-	if (flag==1 || flag==3){
-		button1 += 'disabled="disabled" ';
-	}
-	if (flag==2 || flag==3) {
-		button2 += 'disabled="disabled" ';
-	}
-	button1 += '>Flag1</button>'
-	button2 += '>Flag2</button>'
-	thingyInput = '<input type="text" id="'+name.replace(' ','_')+'_txt">';
-	buttonDiv = '<div class="FLAG">'+ button1 + '<br>' + 
-		button2 + '<br>' + thingyInput + '</div>';
-	return '<tr>'+tdWrap(infoDiv)+tdWrap(image1)+tdWrap(image2)+
-		tdWrap(buttonDiv)+'</tr>';
-}
-$(window).scroll(function() {
-	if($(window).scrollTop() > $(document).height() - $(window).height() -50) {
-	    if (index < maxIndex) {
-			$('button').unbind();
-			$(getNextObservation()).hide().appendTo('#testBox').fadeIn(); 
-			buttonBind();
-			index++;
-		} else{
-			console.log("can't scroll: ".concat(index,' ',maxIndex));
-		}
-	}
-});
-$(window).resize(function() {
-	if($(window).scrollTop() > $(document).height() - $(window).height() -50) {
-	    if (index < maxIndex) {
-			$('button').unbind();
-			$(getNextObservation()).hide().appendTo('#testBox').fadeIn(); 
-			buttonBind();
-			index++;
-		} else{
-			console.log("can't scroll: ".concat(index,' ',maxIndex));
-		}
-	}
-});
-*/
 
 </script>
 </head>	
@@ -230,7 +109,7 @@ Name (required): <input type='text' id='name'><br>
 <button id='submit_flags' onclick="submit_changes()">'Submit'</button>
 <div id='tableWrapper'>
 <table id='testBox' style='width:80%;'>
-<tr><td width=75px>number<td>letter<td>Flag<td>Checkbox</tr>
+<tr><td width=75px>number<td>letter<td width=200px>Flag<td>Checkbox</tr>
 </table>
 </div>
 </body>
