@@ -99,7 +99,7 @@ Name (required): <input type='text' id='name'><br>
 <p id=HeadBox>Make changes and click Submit to send for approval</p>
 <div id='tableWrapper'>
 <table id='testBox' style='width:80%;'>
-<tr><td width=75px>XMM ID<td>DES Image<td>XMM Image<td>XMM ObsId<td width=200px>Flag<td>Checkbox</tr>
+<tr><td width=75px>XMM ID<td>DES Image<td>XMM Image<td>XMM ObsId<td width=200px>Flag</tr>
 </table>
 </div>
 </body>
