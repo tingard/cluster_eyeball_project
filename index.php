@@ -58,7 +58,7 @@ var steps = 0;
 Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XMMObsId.csv ", {
 	download:true,
 	step: function(results) {
-		if (index==0){ return; }
+		if (index==0){ index++; return; }
 		data = results.data[0];
 		out = '<tr>';
 		if (data.length > 1){
