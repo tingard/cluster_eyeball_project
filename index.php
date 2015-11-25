@@ -16,8 +16,9 @@ var index = 0;
 var maxIndex = 0;
 var dataArray = new Array();
 var changeLog = new Array();
+var firstLineCheck = 0;
+var options = ['None','Good','Bad','Not Sure'];
 var foo;
-index = 0;
 
 function async(arg, your_function, callback) {
 	setTimeout(function() {
@@ -28,22 +29,11 @@ function async(arg, your_function, callback) {
 
 function select_change(obs_index){
 	changed_to = $('#select_'+obs_index)[0].selectedIndex;
-	console.log(obs_index+' select changed to index ' + changed_to);
+	console.log(obs_index+' select changed to ' + options[changed_to]);
 	dataArray[obs_index][dataArray[obs_index].length-1] = changed_to;
 	console.log(dataArray[obs_index]);
-	$('#check_'+obs_index)[0].checked = dataArray[obs_index][2+changed_to]== "1" ? true : false;
+	changeLog.push([obs_index, dataArray[obs_index]]);
 }
-/*
-function checkbox_click(obs_index){
-	console.log(obs_index+' checkbox changed');
-	current_flag = $('#select_'+obs_index)[0].selectedIndex;
-	console.log("Current flag: "+['Good','Not Sure','Bad'][current_flag]);
-	changed_listing = dataArray[obs_index];
-	changed_listing[2+current_flag] = $('#check_'+obs_index)[0].checked ? "1" : "0";
-	changeLog.push([obs_index, changed_listing]);
-	dataArray[obs_index] = changed_listing;
-	console.log(current_flag);
-}*/
 
 function flagGenerator(obs_index){
 	select = '<select id="select_'+obs_index+'" onchange="select_change('+obs_index+')"'+
@@ -54,7 +44,7 @@ function flagGenerator(obs_index){
    		     '<option value="3">Bad</option>\n</select>\n';
 	return tdWrap(select);
 }
-var firstLineCheck = 0;
+
 Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XMMObsId.csv ", {
 	download:true,
 	step: function(results) {
