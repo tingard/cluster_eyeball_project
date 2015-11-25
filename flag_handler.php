@@ -1,5 +1,5 @@
 <?php 
-    $index = $_POST['index']."  ";
+    $index = $_POST['index'];
     $flag = $_POST['flag'];
     $file = 'received_changes.csv';
     $current = file_get_contents($file);
