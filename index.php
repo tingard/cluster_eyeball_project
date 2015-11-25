@@ -63,10 +63,12 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
 		out = '<tr>';
 		if (data.length > 1){
 			out += tdWrap(data[0]);
-			out += tdWrap('<img src="'+data[1]+'">');
-			for (i=0; i<2; i++){
-				out += tdWrap(data[i]);
-			}
+			out += tdWrap('<img src="'+data[1]+'" style="height:256px;width:256px;">');
+			out += tdWrap('<img src="'+data[2]+'" style="height:256px;width:256px;">');
+			out += tdWrap('<img src="'+data[3]+'" style="height:256px;width:256px;">');
+			//for (i=0; i<2; i++){
+			//	out += tdWrap(data[i]);
+			//}
 			out += flagGenerator(index);
 			out += '</tr>';
 			$(out).appendTo('#testBox');
@@ -111,7 +113,7 @@ Name (required): <input type='text' id='name'><br>
 <button id='submit_flags' onclick="submit_changes()">'Submit'</button>
 <div id='tableWrapper'>
 <table id='testBox' style='width:80%;'>
-<tr><td width=75px>XMM ID<td>XMM Image<td width=200px>Flag<td>Checkbox</tr>
+<tr><td width=75px>XMM ID<td>DES Image<td>XMM Image<td>XMM ObsId<td width=200px>Flag<td>Checkbox</tr>
 </table>
 </div>
 </body>
