@@ -51,6 +51,7 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
         data = results.data[0];
         out = '<tr>';
         if (data.length > 1){
+            flag = data[data.length-1];
             out += tdWrap(data[0]);
             out += tdWrap('<img src="'+data[1]+'" style="height:256px;width:256px;">');
             out += tdWrap('<img src="'+data[2]+'" style="height:256px;width:256px;">');
@@ -61,8 +62,7 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
             out += flagGenerator(index);
             out += '</tr>';
             $(out).appendTo('#testBox');
-            $('select_'+obs_index+' option:[value="'+
-                data[data.length-1]+'"]').attr('selected', true);
+            $('select_'+index+' option:[value="' + flag + '"]').attr('selected', true);
         }
         dataArray.push(data)
         index++;
