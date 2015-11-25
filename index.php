@@ -17,7 +17,7 @@ var maxIndex = 0;
 var dataArray = new Array();
 var changeLog = new Array();
 var firstLineCheck = 0;
-var options = ['None','Good','Bad','Not Sure'];
+var options = ['None','Good','Not Sure','Bad'];
 var foo;
 
 function async(arg, your_function, callback) {
@@ -69,27 +69,23 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
 })
 
 function submit_changes() {
-	indexList = new Array();
 	changeLog.reverse(); // botch to replace stack method, results in un-neccesary posts
 	while (changeLog.length>0){
-		row = changeLog.pop(0)
-		if (indexList.indexOf(row[0])<0){
-			postData = {};
-			postData['index'] = row[0];
-			postData['data'] = row[1];
-			console.log("Changed data:");
-			console.log(postData);
+		row = changeLog.pop()
+		postData = {};
+		postData['index'] = row[0];
+		postData['data'] = row[1];
+		//console.log("Changed data:");
+		//console.log(postData);
 		}
-			//indexList.push(row[0]);
-		/*
 		$.ajax({
 			type: "POST",
-			url: "./bin/changeFlags.php",
+			url: "./flag_handler.php",
 			data: postData,
-			success: function() {
-				console.log('Sent form');
+			success: function(response) {
+				console.log(response);
 			}	
-  		});*/
+  		});
 	}
 	changeLog = new Array();
 }
