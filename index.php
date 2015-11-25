@@ -62,7 +62,7 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
             out += flagGenerator(index);
             out += '</tr>';
             $(out).appendTo('#testBox');
-            $('select_'+index+' option:[value="' + flag + '"]').attr('selected', true);
+            $('select_'+index+' option[value="' + flag + '"]').attr('selected', true);
         }
         dataArray.push(data)
         index++;
