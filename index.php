@@ -40,7 +40,7 @@ function flagGenerator(obs_index){
          '<option value="0">None</option>\n\t' +
          '<option value="1">Good</option>\n\t' +
          '<option value="2">NotSure</option>\n\t' +
-         '<option value="3">Bad</option>\n</select>\n';
+         '<option value="3">Bad</option>\n</select>\n';    
     return tdWrap(select);
 }
 
@@ -61,6 +61,8 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
             out += flagGenerator(index);
             out += '</tr>';
             $(out).appendTo('#testBox');
+            $('select_'+obs_index+' option:[value="'+
+                data[data.length-1]+'"]').attr('selected', true);
         }
         dataArray.push(data)
         index++;
@@ -80,6 +82,7 @@ function submit_changes() {
             data: postData,
             success: function(response) {
                 console.log(response);
+                $('#HeadBox').html('Your changes have been sent for approval, thank you');
             }
         });
     }
@@ -93,6 +96,7 @@ function submit_changes() {
 Name (required): <input type='text' id='name'><br>
 </div>-->
 <button id='submit_flags' onclick="submit_changes()">'Submit'</button>
+<p id=HeadBox>Make changes and click Submit to send for approval</p>
 <div id='tableWrapper'>
 <table id='testBox' style='width:80%;'>
 <tr><td width=75px>XMM ID<td>DES Image<td>XMM Image<td>XMM ObsId<td width=200px>Flag<td>Checkbox</tr>
