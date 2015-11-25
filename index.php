@@ -48,7 +48,7 @@ function checkbox_click(obs_index){
 function flagGenerator(obs_index){
 	select = '<select id="select_'+obs_index+'" onchange="select_change('+obs_index+')"'+
 			 'style="width:100px">\n\t'+
-			 '<option value="0">None</option>\n\t'
+			 '<option value="0">None</option>\n\t' +
 		     '<option value="1">Good</option>\n\t' +
 		     '<option value="2">NotSure</option>\n\t' +
    		     '<option value="3">Bad</option>\n</select>\n';
