@@ -4,6 +4,7 @@
     $file = 'received_changes.csv';
     $current = file_get_contents($file);
     $current .= $index . ",". $flag ."\n";
-    file_put_contents($file, $current);
-    echo "Appended ". $index . ",". $flag . " to csv";
+    echo $current;
+    file_put_contents($file, $current) or die('write failed'); 
+    //echo "Appended ". $index . ",". $flag . " to csv";
 ?>
