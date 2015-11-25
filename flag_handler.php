@@ -1,4 +1,4 @@
 <?php 
-    echo $_POST['index'];
-    echo $_POST['data'];
+    echo $_POST['index']."  ";
+    echo $_POST['flag'];
 ?>

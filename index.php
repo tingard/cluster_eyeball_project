@@ -74,7 +74,7 @@ function submit_changes() {
 		row = changeLog.pop()
 		postData = {};
 		postData['index'] = row[0];
-		postData['data'] = row[1];
+		postData['flag'] = row[1][row[1].length-1];
 		//console.log("Changed data:");
 		//console.log(postData);
 		$.ajax({
