@@ -63,7 +63,7 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
 		out = '<tr>';
 		if (data.length > 1){
 			out += tdWrap(data[0]);
-			out += tdWrap('<img src="'+data[1]+'>');
+			out += tdWrap('<img src="'+data[1]+'">');
 			for (i=0; i<2; i++){
 				out += tdWrap(data[i]);
 			}
