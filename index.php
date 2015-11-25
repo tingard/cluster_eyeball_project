@@ -54,14 +54,16 @@ function flagGenerator(obs_index){
 			   obs_index+')" name="isFlag">';
 	return tdWrap(select)+tdWrap(checkbox);
 }
-var steps = 0;
+var firstLineCheck = 0;
 Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XMMObsId.csv ", {
 	download:true,
 	step: function(results) {
-		if (index==0){ index++; return; }
+		if (firstLineCheck==0){ firstLineCheck++; return; }
 		data = results.data[0];
 		out = '<tr>';
 		if (data.length > 1){
+			out += tdWrap(data[0]);
+			out += tdWrap('<img src="'+data[1]+'>');
 			for (i=0; i<2; i++){
 				out += tdWrap(data[i]);
 			}
@@ -109,7 +111,7 @@ Name (required): <input type='text' id='name'><br>
 <button id='submit_flags' onclick="submit_changes()">'Submit'</button>
 <div id='tableWrapper'>
 <table id='testBox' style='width:80%;'>
-<tr><td width=75px>number<td>letter<td width=200px>Flag<td>Checkbox</tr>
+<tr><td width=75px>XMM ID<td>XMM Image<td width=200px>Flag<td>Checkbox</tr>
 </table>
 </div>
 </body>
