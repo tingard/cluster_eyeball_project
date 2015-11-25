@@ -77,7 +77,6 @@ function submit_changes() {
 		postData['data'] = row[1];
 		//console.log("Changed data:");
 		//console.log(postData);
-		}
 		$.ajax({
 			type: "POST",
 			url: "./flag_handler.php",
@@ -86,7 +85,6 @@ function submit_changes() {
 				console.log(response);
 			}	
   		});
-	}
 	changeLog = new Array();
 }
 
