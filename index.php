@@ -85,6 +85,7 @@ function submit_changes() {
 				console.log(response);
 			}	
   		});
+	}
 	changeLog = new Array();
 }
 
