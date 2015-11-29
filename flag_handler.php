@@ -8,6 +8,7 @@
         $current = "";
     }
     $current .= $index . ",". $flag ."\n";
+    //echo $index . "  " . $flag;
     file_put_contents($file, $current) or die('write failed'); 
-    echo "Changes Added to approval list
+    echo "Changes Added to approval list";
 ?>
