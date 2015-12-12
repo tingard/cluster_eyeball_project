@@ -75,6 +75,7 @@ function checkother() {
     }
     else {
         $('#nameInput').attr('disabled', 'true');
+    }
 }
 function getName() {
     $('select').attr('disabled','true');
