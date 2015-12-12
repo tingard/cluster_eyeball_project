@@ -84,7 +84,7 @@ function name_submitted() {
     if ($('#nameSelect')[0].selectedIndex==4){
         name = $('#nameInput').val();
     } else {
-        name = ['Kathy','Phil','Alberto','Rutu']$('#nameSelect')[0].selectedIndex;
+        name = ['Kathy','Phil','Alberto','Rutu'][$('#nameSelect')[0].selectedIndex];
     }
     console.log(name);
 }
