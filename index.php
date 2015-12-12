@@ -93,7 +93,7 @@ function name_submitted() {
 
 function getName() {
     $('select:not(#nameSelect)').attr('disabled',true);
-    $('button').attr('disabled',true);
+    $('button:not(#nameButton)').attr('disabled',true);
     $('#nameBox').fadeIn();
 }
 
