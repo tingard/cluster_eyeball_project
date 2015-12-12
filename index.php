@@ -69,7 +69,7 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
         index++;
     }
 })
-function checkother() {
+function checkOther() {
     if ($('#nameSelect').selectedIndex==4){
         $('#nameInput').attr('disabled', 'false');
     }
@@ -87,9 +87,9 @@ function getName() {
                  '<option value="1">Phil</option>\n\t' +
                  '<option value="2">Alberto</option>\n\t' +
                  '<option value="3">Rutu</option>\n</select>\n';   
-    otherBox = '<input type="text" id="nameInput">';
+    otherBox = '<input type="text" id="nameInput" disabled>';
     nameButton = '<button id="nameButton" onclick="name_submitted()">Submit</button>'
-    out = $('<div id="nameBox" disabled>Name:<br>' + nameSelect + "<br>" + otherBox + nameButton +
+    out = $('<div id="nameBox" >Name:<br>' + nameSelect + "<br>" + otherBox + nameButton +
         '</div>').hide().appendTo('body').fadeIn();
 }
 
