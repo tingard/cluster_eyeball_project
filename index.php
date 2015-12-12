@@ -74,7 +74,7 @@ function getName() {
     out = $('<div id="nameBox">Name:' +
         '<button id="nameButton" onclick="name_submitted()">Submit</button>' +
         '</div>').hide().appendTo('body').fadeIn();
-    $('select').css('disabled',true);
+    $('select').attr('disabled','true');
 }
 
 function submit_changes() {
