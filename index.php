@@ -72,12 +72,20 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
 function checkOther() {
     console.log($('#nameSelect')[0].selectedIndex);
     if ($('#nameSelect')[0].selectedIndex==3){
-        $('#nameInput').fadeIn().attr('disabled', 'false');
+        $('#nameInput').attr('disabled', 'false');
     }
     else {
-        $('#nameInput').hide().attr('disabled', 'true');
+        $('#nameInput').attr('disabled', 'true');
     }
 }
+
+function name_submitted() {
+    console.log($('#nameSelect')[0].selectedIndex);
+    if ($('#nameSelect')[0].selectedIndex==3){
+        console.log($('#nameInput').val());
+    }
+}
+
 function getName() {
     $('select').attr('disabled','true');
     $('button').attr('disabled','true');
@@ -88,9 +96,9 @@ function getName() {
                  '<option value="1">Phil</option>\n\t' +
                  '<option value="2">Alberto</option>\n\t' +
                  '<option value="3">Rutu</option>\n</select>\n';   
-    otherBox = '<input type="text" id="nameInput" disabled hidden>';
+    otherBox = '<input type="text" id="nameInput" disabled>';
     nameButton = '<button id="nameButton" onclick="name_submitted()">Submit</button>'
-    out = $('<div id="nameBox" >Name:<br>' + nameSelect + "<br>" + otherBox + nameButton +
+    out = $('<div id="nameBox" >Name:<br>' + nameSelect + otherBox + "<br>"  + nameButton +
         '</div>').hide().appendTo('body').fadeIn();
 }
 
