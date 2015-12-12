@@ -71,8 +71,10 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
 })
 
 function getName() {
-    out = $('<div id="nameBox">Name:</div>').hide().appendTo('body').fadeIn();
-    $('select').hide();
+    out = $('<div id="nameBox">Name:' +
+        '<button id="nameButton" onclick="name_submitted()">Submit</button>' +
+        '</div>').hide().appendTo('body').fadeIn();
+    $('select').css('disabled',true);
 }
 
 function submit_changes() {
