@@ -71,10 +71,11 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
 })
 
 function getName() {
+    $('select').attr('disabled','true');
+    $('button').attr('disabled','true');
     out = $('<div id="nameBox">Name:' +
         '<button id="nameButton" onclick="name_submitted()">Submit</button>' +
         '</div>').hide().appendTo('body').fadeIn();
-    $('select').attr('disabled','true');
 }
 
 function submit_changes() {
