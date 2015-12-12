@@ -84,7 +84,7 @@ function name_submitted() {
 
 function getName() {
     $('select:not(#nameSelect)').attr('disabled',true);
-    $('button:not(#nameButton)').attr('disabled',true);
+    $('button:not(#nameButton):not(#cancelButton)').attr('disabled',true);
     $('#nameBox').fadeIn();
 }
 
@@ -128,9 +128,6 @@ function cancel_submission() {
 </script>
 </head>	
 <body>
-<!--<div id="nameInput">
-Name (required): <input type='text' id='name'><br>
-</div>-->
 <button id='submit_flags' onclick="getName()">Submit</button>
 <p id=HeadBox>Make changes and click Submit to send for approval</p>
 <div id='tableWrapper'>
