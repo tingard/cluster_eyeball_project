@@ -2,10 +2,15 @@
     background-color:white;
     border-radius: 30px;
     border:10px solid red;
+    font-size:200%
     position:fixed;
     left:35%;
     top:10%;
     width:30%;
     height:30%;
     padding:10px 10px;
+}
+
+input {
+    width:80%;
 }
