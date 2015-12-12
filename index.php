@@ -54,9 +54,9 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
         if (data.length > 1){
             flag = data[data.length-1];
             out += tdWrap(data[0]);
-            out += tdWrap('<img src="'+data[1]+'" style="height:256px;width:256px;">');
-            out += tdWrap('<img src="'+data[2]+'" style="height:256px;width:256px;">');
-            out += tdWrap('<img src="'+data[3]+'" style="height:256px;width:256px;">');
+            out += tdWrap('<img src="'+data[1]+'" style="height:512px;width:512px;">');
+            out += tdWrap('<img src="'+data[2]+'" style="height:512px;width:512px;">');
+            out += tdWrap('<img src="'+data[3]+'" style="height:512px;width:512px;">');
             //for (i=0; i<2; i++){
             //out += tdWrap(data[i]);
             //}
@@ -71,7 +71,7 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
 })
 function checkOther() {
     console.log($('#nameSelect')[0].selectedIndex);
-    if ($('#nameSelect')[0].selectedIndex==4){
+    if ($('#nameSelect')[0].selectedIndex==6){
         $('#nameInput').attr('disabled', false);
     }
     else {
@@ -80,7 +80,7 @@ function checkOther() {
 }
 var name;
 function name_submitted() {
-    if ($('#nameSelect')[0].selectedIndex==4){
+    if ($('#nameSelect')[0].selectedIndex==6){
         name = $('#nameInput').val();
     } else {
         name = ['Kathy','Phil','Alberto','Rutu'][$('#nameSelect')[0].selectedIndex];
@@ -137,9 +137,11 @@ Name (required): <input type='text' id='name'><br>
 <select id="nameSelect" onchange="checkOther()" style="width:100px">
     <option value="0">Kathy</option>
     <option value="1">Phil</option>
-    <option value="2">Alberto</option>
-    <option value="3">Rutu</option>
-    <option value="4">other</option>
+    <option value="2">Chris</option>
+    <option value="3">Alberto</option>
+    <option value="4">Carlos</option>
+    <option value="5">Rutu</option>
+    <option value="6">other</option>
 </select>
 <input type="text" id="nameInput" disabled>
 <br>
