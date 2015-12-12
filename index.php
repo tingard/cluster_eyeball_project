@@ -69,19 +69,26 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
         index++;
     }
 })
-
+function checkother() {
+    if ($('#nameSelect').selectedIndex==4){
+        $('#nameInput').attr('disabled', 'false');
+    }
+    else {
+        $('#nameInput').attr('disabled', 'true');
+}
 function getName() {
     $('select').attr('disabled','true');
     $('button').attr('disabled','true');
     nameSelect = '<select id="nameSelect"'+
-         'style="width:100px">\n\t'+
-         '<option value="0">Kathy</option>\n\t' +
-         '<option value="1">Phil</option>\n\t' +
-         '<option value="2">Alberto</option>\n\t' +
-         '<option value="3">Rutu</option>\n</select>\n';   
+                 'onchange="
+                 'style="width:100px">\n\t'+
+                 '<option value="0">Kathy</option>\n\t' +
+                 '<option value="1">Phil</option>\n\t' +
+                 '<option value="2">Alberto</option>\n\t' +
+                 '<option value="3">Rutu</option>\n</select>\n';   
     otherBox = '<input type="text" id="nameInput">';
     nameButton = '<button id="nameButton" onclick="name_submitted()">Submit</button>'
-    out = $('<div id="nameBox">Name:<br>' + nameSelect + "<br>" + otherBox + nameButton +
+    out = $('<div id="nameBox" disabled=true>Name:<br>' + nameSelect + "<br>" + otherBox + nameButton +
         '</div>').hide().appendTo('body').fadeIn();
 }
 
