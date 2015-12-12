@@ -72,7 +72,7 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
 
 function getName() {
     out = $('<div id="nameBox">Name:</div>').hide().appendTo('body').fadeIn();
-    %('select').hide();
+    $('select').hide();
 }
 
 function submit_changes() {
