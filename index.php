@@ -92,7 +92,8 @@ function submit_changes() {
     if ($('#nameSelect')[0].selectedIndex==6){
         name = $('#nameInput').val();
     } else {
-        name = ['Kathy','Phil','Alberto','Rutu'][$('#nameSelect')[0].selectedIndex];
+        name = ['Kathy','Phil','Chris','Alberto','Carlos','Rutu'][$('#nameSelect')[0]
+                                                                    .selectedIndex];
     }
     console.log('Name: '+name);
     $('select').attr('disabled', false);
