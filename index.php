@@ -70,12 +70,12 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
     }
 })
 function checkOther() {
-    console.log($('#nameSelect').selectedIndex);
-    if ($('#nameSelect').selectedIndex==3){
-        $('#nameInput').attr('disabled', 'false');
+    console.log($('#nameSelect')[0].selectedIndex);
+    if ($('#nameSelect')[0].selectedIndex==3){
+        $('#nameInput').fadeIn().attr('disabled', 'false');
     }
     else {
-        $('#nameInput').attr('disabled', 'true');
+        $('#nameInput').hide().attr('disabled', 'true');
     }
 }
 function getName() {
@@ -88,7 +88,7 @@ function getName() {
                  '<option value="1">Phil</option>\n\t' +
                  '<option value="2">Alberto</option>\n\t' +
                  '<option value="3">Rutu</option>\n</select>\n';   
-    otherBox = '<input type="text" id="nameInput" disabled>';
+    otherBox = '<input type="text" id="nameInput" disabled hidden>';
     nameButton = '<button id="nameButton" onclick="name_submitted()">Submit</button>'
     out = $('<div id="nameBox" >Name:<br>' + nameSelect + "<br>" + otherBox + nameButton +
         '</div>').hide().appendTo('body').fadeIn();
