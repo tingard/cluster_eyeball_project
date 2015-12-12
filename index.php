@@ -80,30 +80,21 @@ function checkOther() {
 }
 var name;
 function name_submitted() {
-    console.log($('#nameSelect')[0].selectedIndex);
     if ($('#nameSelect')[0].selectedIndex==4){
         name = $('#nameInput').val();
     } else {
         name = ['Kathy','Phil','Alberto','Rutu'][$('#nameSelect')[0].selectedIndex];
     }
-    console.log(name);
+    console.log('Name: '+name);
+    $('select').attr('disabled', false);
+    $('button').attr('disabled', false);
+    $('#nameBox').remove()
 }
 
 function getName() {
-    $('select').attr('disabled','true');
-    $('button').attr('disabled','true');
-    nameSelect = '<select id="nameSelect"'+
-                 'onchange="checkOther()"' +
-                 'style="width:100px">\n\t'+
-                 '<option value="0">Kathy</option>\n\t' +
-                 '<option value="1">Phil</option>\n\t' +
-                 '<option value="2">Alberto</option>\n\t' +
-                 '<option value="3">Rutu</option>\n\t' +
-                 '<option value="4">other</option>\n</select>\n';   
-    otherBox = '<input type="text" id="nameInput" disabled>';
-    nameButton = '<button id="nameButton" onclick="name_submitted()">Submit</button>'
-    out = $('<div id="nameBox" >Name:<br>' + nameSelect + otherBox + "<br>"  + nameButton +
-        '</div>').hide().appendTo('body').fadeIn();
+    $('select').attr('disabled',true);
+    $('button').attr('disabled',true);
+    $('#nameBox').hide().appendTo('body').fadeIn();
 }
 
 function submit_changes() {
@@ -141,6 +132,18 @@ Name (required): <input type='text' id='name'><br>
 <table id='testBox' style='width:80%;'>
 <tr><td width=75px>XMM ID<td>DES Image<td>XMM Image<td>XMM ObsId<td width=200px>Flag</tr>
 </table>
+</div>
+<div id="nameBox" >Name:<br>
+<select id="nameSelect" onchange="checkOther()" style="width:100px">
+    <option value="0">Kathy</option>
+    <option value="1">Phil</option>
+    <option value="2">Alberto</option>
+    <option value="3">Rutu</option>
+    <option value="4">other</option>
+</select>
+<input type="text" id="nameInput" disabled>
+<br>
+<button id="nameButton" onclick="name_submitted()">Submit</button>
 </div>
 </body>
 </html></head>
