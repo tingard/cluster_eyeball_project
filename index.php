@@ -71,19 +71,22 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
 })
 function checkOther() {
     console.log($('#nameSelect')[0].selectedIndex);
-    if ($('#nameSelect')[0].selectedIndex=="3"){
+    if ($('#nameSelect')[0].selectedIndex==4){
         $('#nameInput').attr('disabled', false);
     }
     else {
         $('#nameInput').attr('disabled', true);
     }
 }
-
+var name;
 function name_submitted() {
     console.log($('#nameSelect')[0].selectedIndex);
-    if ($('#nameSelect')[0].selectedIndex==3){
-        console.log($('#nameInput').val());
+    if ($('#nameSelect')[0].selectedIndex==4){
+        name = $('#nameInput').val();
+    } else {
+        name = ['Kathy','Phil','Alberto','Rutu']$('#nameSelect')[0].selectedIndex;
     }
+    console.log(name);
 }
 
 function getName() {
@@ -112,6 +115,7 @@ function submit_changes() {
         postData = {};
         postData['index'] = row[0];
         postData['flag'] = row[1][row[1].length-1];
+        postData['name'] = name;
         $.ajax({
             type: "POST",
             url: "./flag_handler.php",
