@@ -80,7 +80,7 @@ function getName() {
     $('select').attr('disabled','true');
     $('button').attr('disabled','true');
     nameSelect = '<select id="nameSelect"'+
-                 'onchange="
+                 'onchange="checkOther()"' +
                  'style="width:100px">\n\t'+
                  '<option value="0">Kathy</option>\n\t' +
                  '<option value="1">Phil</option>\n\t' +
