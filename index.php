@@ -71,7 +71,8 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
 })
 
 function getName() {
-    out = '<div id="nameBox"></div';
+    out = $('<div id="nameBox">Name:</div>').hide().appendTo('body').fadeIn();
+    %('select').hide();
 }
 
 function submit_changes() {
@@ -102,7 +103,7 @@ function submit_changes() {
 <!--<div id="nameInput">
 Name (required): <input type='text' id='name'><br>
 </div>-->
-<button id='submit_flags' onclick="submit_changes()">'Submit'</button>
+<button id='submit_flags' onclick="submit_changes()">Submit</button>
 <p id=HeadBox>Make changes and click Submit to send for approval</p>
 <div id='tableWrapper'>
 <table id='testBox' style='width:80%;'>
