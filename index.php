@@ -5,6 +5,7 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
 </script>
+<link rel="stylesheet" href="stylesheet.css">
 <script style="text/javasript" src="js/PapaParse-4.1.2/papaparse.js"></script>
 <script>
 
@@ -69,7 +70,12 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
     }
 })
 
+function getName() {
+    out = '<div id="nameBox"></div';
+}
+
 function submit_changes() {
+    getName();
     changeLog.reverse(); // botch to replace stack method, results in un-neccesary posts
     while (changeLog.length>0){
         row = changeLog.pop()
