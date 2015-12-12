@@ -30,7 +30,6 @@ function async(arg, your_function, callback) {
 
 function select_change(obs_index){
     changed_to = $('#select_'+obs_index)[0].selectedIndex;
-    //console.log(obs_index+' select changed to ' + options[changed_to]);
     dataArray[obs_index][dataArray[obs_index].length-1] = changed_to;
     changeLog.push([obs_index, dataArray[obs_index]]);
 }
@@ -70,7 +69,6 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
     }
 })
 function checkOther() {
-    console.log($('#nameSelect')[0].selectedIndex);
     if ($('#nameSelect')[0].selectedIndex==6){
         $('#nameInput').attr('disabled', false);
     }
@@ -144,7 +142,7 @@ function cancel_submission() {
     <option value="3">Alberto</option>
     <option value="4">Carlos</option>
     <option value="5">Rutu</option>
-    <option value="6">other</option>
+    <option value="6">Other (please specify)</option>
 </select>
 <input type="text" id="nameInput" disabled>
 <br>
