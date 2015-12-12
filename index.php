@@ -88,13 +88,13 @@ function name_submitted() {
     console.log('Name: '+name);
     $('select').attr('disabled', false);
     $('button').attr('disabled', false);
-    $('#nameBox').remove()
+    $('#nameBox').hide()
 }
 
 function getName() {
     $('select').attr('disabled',true);
     $('button').attr('disabled',true);
-    $('#nameBox').hide().appendTo('body').fadeIn();
+    $('#nameBox').fadeIn();
 }
 
 function submit_changes() {
@@ -133,7 +133,7 @@ Name (required): <input type='text' id='name'><br>
 <tr><td width=75px>XMM ID<td>DES Image<td>XMM Image<td>XMM ObsId<td width=200px>Flag</tr>
 </table>
 </div>
-<div id="nameBox" >Name:<br>
+<div id="nameBox" hidden>Name:<br>
 <select id="nameSelect" onchange="checkOther()" style="width:100px">
     <option value="0">Kathy</option>
     <option value="1">Phil</option>
