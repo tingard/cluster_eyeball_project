@@ -72,10 +72,10 @@ Papa.parse("http://astronomy.sussex.ac.uk/~tl229/cluster_flag/id_desIm_XMMSrc_XM
 function checkOther() {
     console.log($('#nameSelect')[0].selectedIndex);
     if ($('#nameSelect')[0].selectedIndex=="3"){
-        $('#nameInput').attr('disabled', 'false');
+        $('#nameInput').attr('disabled', false);
     }
     else {
-        $('#nameInput').attr('disabled', 'true');
+        $('#nameInput').attr('disabled', true);
     }
 }
 
