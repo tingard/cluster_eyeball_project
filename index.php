@@ -89,7 +89,7 @@ function getName() {
                  '<option value="3">Rutu</option>\n</select>\n';   
     otherBox = '<input type="text" id="nameInput">';
     nameButton = '<button id="nameButton" onclick="name_submitted()">Submit</button>'
-    out = $('<div id="nameBox" disabled=true>Name:<br>' + nameSelect + "<br>" + otherBox + nameButton +
+    out = $('<div id="nameBox" disabled>Name:<br>' + nameSelect + "<br>" + otherBox + nameButton +
         '</div>').hide().appendTo('body').fadeIn();
 }
 
