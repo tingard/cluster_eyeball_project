@@ -80,15 +80,6 @@ function checkOther() {
 }
 var name;
 function name_submitted() {
-    if ($('#nameSelect')[0].selectedIndex==6){
-        name = $('#nameInput').val();
-    } else {
-        name = ['Kathy','Phil','Alberto','Rutu'][$('#nameSelect')[0].selectedIndex];
-    }
-    console.log('Name: '+name);
-    $('select').attr('disabled', false);
-    $('button').attr('disabled', false);
-    $('#nameBox').hide()
 }
 
 function getName() {
@@ -98,7 +89,15 @@ function getName() {
 }
 
 function submit_changes() {
-    getName();
+    if ($('#nameSelect')[0].selectedIndex==6){
+        name = $('#nameInput').val();
+    } else {
+        name = ['Kathy','Phil','Alberto','Rutu'][$('#nameSelect')[0].selectedIndex];
+    }
+    console.log('Name: '+name);
+    $('select').attr('disabled', false);
+    $('button').attr('disabled', false);
+    $('#nameBox').hide();
     changeLog.reverse(); // botch to replace stack method, results in un-neccesary posts
     while (changeLog.length>0){
         row = changeLog.pop()
@@ -118,15 +117,21 @@ function submit_changes() {
         });
     }
     changeLog = new Array();
+    name = '';
 }
+function cancel_submission() {
+    $('select').attr('disabled', false);
+    $('button').attr('disabled', false);
+    $('#nameBox').hide();
 
+}
 </script>
 </head>	
 <body>
 <!--<div id="nameInput">
 Name (required): <input type='text' id='name'><br>
 </div>-->
-<button id='submit_flags' onclick="submit_changes()">Submit</button>
+<button id='submit_flags' onclick="getName()">Submit</button>
 <p id=HeadBox>Make changes and click Submit to send for approval</p>
 <div id='tableWrapper'>
 <table id='testBox' style='width:80%;'>
@@ -145,7 +150,8 @@ Name (required): <input type='text' id='name'><br>
 </select>
 <input type="text" id="nameInput" disabled>
 <br>
-<button id="nameButton" onclick="name_submitted()">Submit</button>
+<button id="nameButton" onclick="submit_changes()">Submit</button>
+<button id="cancelButton" onclick="cancel_submission()">Cancel</button>
 </div>
 </body>
 </html></head>
